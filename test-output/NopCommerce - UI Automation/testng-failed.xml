@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [NopCommerce - UI Automation]">
+  <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"/>
+  <parameter name="userUrl" value="https://demo.nopcommerce.com/"/>
+  <test thread-count="5" name="Run on Firefox(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.nopcommerce.user.Level_12_Dynamic_Locator_Rest_Parameter">
+        <methods>
+          <include name="User_04_Switch_Multiple_Page"/>
+          <include name="afterClass"/>
+          <include name="beforeClass"/>
+          <include name="User_03_Switch_Multiple_Page"/>
+        </methods>
+      </class> <!-- com.nopcommerce.user.Level_12_Dynamic_Locator_Rest_Parameter -->
+    </classes>
+  </test> <!-- Run on Firefox(failed) -->
+</suite> <!-- Failed suite [NopCommerce - UI Automation] -->
