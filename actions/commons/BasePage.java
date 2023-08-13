@@ -263,6 +263,12 @@ public class BasePage {
 			getElement(driver, locator).click();
 		}
 	}
+	
+	public void checkToCheckBoxRadio(WebDriver driver, String locator, String...restParam) {
+		if (!getElement(driver, getDynamicLocator(locator, restParam)).isSelected()) {
+			getElement(driver, getDynamicLocator(locator, restParam)).click();
+		}
+	}
 
 	public void UncheckToCheckBox(WebDriver driver, String locator) {
 		if (getElement(driver, locator).isSelected()) {
@@ -312,6 +318,14 @@ public class BasePage {
 
 	public void sendKeyBoardToElement(WebDriver driver, String locator) {
 		new Actions(driver).sendKeys(getElement(driver, locator)).perform();
+	}
+	
+	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue) {
+		new Select(getElement(driver, locator)).selectByVisibleText(itemValue);
+	}
+	
+	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue, String... restParam) {
+		new Select(getElement(driver, getDynamicLocator(locator, restParam))).selectByVisibleText(itemValue);
 	}
 
 	public Object executeForBrowser(WebDriver driver, String javaScript) {

@@ -47,7 +47,7 @@ public class HomePageObject extends BasePage{
 		
 		List<WebElement> allPageLinks = getListElement(driver, HomePageUI.ALL_PAGES_LINK);
 		
-		int columnIdex = getListElementSize(driver, HomePageUI.COLUMN_INDEX_BY_COLUMN_NAME,columnName);
+		int columnIdex = getListElementSize(driver, HomePageUI.COLUMN_INDEX_BY_COLUMN_NAME,columnName) + 1;
 		
 		for (WebElement pageLink : allPageLinks) {
 			pageLink.click();
@@ -73,6 +73,30 @@ public class HomePageObject extends BasePage{
 	public List<String> getAllPageValueByColumnNameInAPI(String string) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void enterToTextboxByColumnNameAndRowIndex(String columnName, String rowIndex, String valueToSendKey) {
+		int columnIdex = getListElementSize(driver, HomePageUI.DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME,columnName) + 1;
+		
+		waitForElementVisible(driver, HomePageUI.DYNAMIC_TEXTBOX_BY_ROW_INDEX_AND_COLUMN_INDEX, rowIndex, String.valueOf(columnIdex));
+		sendKeyToElement(driver, HomePageUI.DYNAMIC_TEXTBOX_BY_ROW_INDEX_AND_COLUMN_INDEX, valueToSendKey, rowIndex, String.valueOf(columnIdex));
+		
+	}
+
+	public void selectDropdownByColumnNameAndRowIndex(String columnName, String rowIndex, String dropDownItem) {
+		int columnIdex = getListElementSize(driver, HomePageUI.DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME,columnName) + 1;
+		
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_DROPDOWN_BY_ROW_INDEX_AND_COLUMN_INDEX, rowIndex, String.valueOf(columnIdex));
+		selectItemInDefaultDropdown(driver, HomePageUI.DYNAMIC_DROPDOWN_BY_ROW_INDEX_AND_COLUMN_INDEX, dropDownItem, rowIndex, String.valueOf(columnIdex));
+		
+	}
+
+	public void clickToCheckboxByColumnNameAndRowIndex(String columnName, String rowIndex) {
+		int columnIdex = getListElementSize(driver, HomePageUI.DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME,columnName) + 1;
+		
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX, rowIndex,String.valueOf(columnIdex));
+		checkToCheckBoxRadio(driver, HomePageUI.DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX, rowIndex,String.valueOf(columnIdex));
+		
 	}
 
 }

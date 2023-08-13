@@ -90,7 +90,7 @@ public class Level_13_Handle_Data_Table extends BaseTest {
 		
 	}
 	
-	@Test
+	
 	public void TC_05_Action_By_Index() {
 		allValueUI = homePage.getAllPageValueByColumnName("Country");
 		
@@ -106,6 +106,20 @@ public class Level_13_Handle_Data_Table extends BaseTest {
 		
 		
 	}
+	
+	@Test
+	public void TC_06_Action_By_Index() {
+		homePage.openPageUrl(driver, "https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
+		
+		homePage.enterToTextboxByColumnNameAndRowIndex("Contact Person","2","Oliver heldens");
+		homePage.enterToTextboxByColumnNameAndRowIndex("Company","1","HELDEEP");
+		
+		homePage.selectDropdownByColumnNameAndRowIndex("Country","3","United Kingdom");
+		homePage.selectDropdownByColumnNameAndRowIndex("Country","1","Japan");
+		
+		homePage.clickToCheckboxByColumnNameAndRowIndex("NPO?","2");
+	}
+	
 	
 	@AfterClass
 	public void afterClass() {
