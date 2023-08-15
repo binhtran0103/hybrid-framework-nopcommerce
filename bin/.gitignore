@@ -1,11 +1,2 @@
-/carFactory/
-/carWithoutFactory/
-/com/
-/commons/
-/javaDesignPattern/
-/pageObejects/
-/pageObject/
-/pageObjects/
-/pageUIs/
-/reportConfig/
-/utilities/
+/bin/
+/test-output/
