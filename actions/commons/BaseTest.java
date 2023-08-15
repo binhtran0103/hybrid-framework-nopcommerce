@@ -84,7 +84,7 @@ public class BaseTest {
 	}
 
 	protected void closeBrowser() {
-		if (driver != null) {
+		if (driver == null) {
 			System.out.println("Browser is closed!");
 		} else {
 			driver.quit();
