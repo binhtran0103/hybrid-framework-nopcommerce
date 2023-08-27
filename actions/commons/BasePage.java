@@ -153,6 +153,10 @@ public class BasePage {
 		getElement(driver, getDynamicLocator(locator, restParam)).click();
 	}
 	
+	public void clickToElement(WebDriver driver, WebElement element) {
+		element.click();
+	}
+	
 	public By getByLocator(String locatorValue) {
 		By by = null;
 		if(locatorValue.startsWith("xpath=") || locatorValue.startsWith("XPath") || locatorValue.startsWith("XPATH=") || locatorValue.startsWith("Xpath")) {
@@ -430,14 +434,24 @@ public class BasePage {
 				.until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
 	}
 	
+	public void waitForElementClickable(WebDriver driver, WebElement element) {
+		new WebDriverWait(driver, Duration.ofSeconds(longTimeOut))
+				.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
 	public void waitForElementClickable(WebDriver driver, String locator, String...restParam) {
 		new WebDriverWait(driver, Duration.ofSeconds(longTimeOut))
 				.until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicLocator(locator, restParam))));
 	}
 
-	public void waitForElementInvisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, Duration.ofSeconds(longTimeOut))
+	public boolean waitForElementInvisible(WebDriver driver, String locator) {
+		return new WebDriverWait(driver, Duration.ofSeconds(longTimeOut))
 				.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
+	}
+	
+	public boolean waitForListElementInvisible(WebDriver driver, String locator) {
+		return new WebDriverWait(driver, Duration.ofSeconds(longTimeOut))
+				.until(ExpectedConditions.invisibilityOfAllElements (getListElement(driver, locator)));
 	}
 	
 	public boolean isPageLoadedSuccess(WebDriver driver) {
@@ -457,6 +471,17 @@ public class BasePage {
 			}
 		};
 		return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
+	}
+	
+	public void uploadMultipleFiles(WebDriver driver, String...fileNames) {
+		String filePath = GlobalConstants.UPLOAD_PATH;
+		String fullFileName ="";
+		for (String file : fileNames) {
+			fullFileName = fullFileName + filePath + file + "\n";
+			
+		}
+		fullFileName = fullFileName.trim();
+		getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
 	}
 	
 	public long longTimeOut = GlobalConstants.LONG_TIMEOUT;
