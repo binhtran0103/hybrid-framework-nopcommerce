@@ -3,6 +3,8 @@ package commons;
 import java.time.Duration;
 import java.util.Random;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +14,13 @@ import org.testng.Assert;
 import org.testng.Reporter;
 
 
+
 public class BaseTest {
 	private WebDriver driver;
+	protected final Logger log;
+	public BaseTest() {
+		log = LogManager.getLogger(getClass());
+	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
 		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
