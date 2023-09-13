@@ -49,7 +49,7 @@ public class Level_16_Log extends BaseTest {
 		verifyEquals(registerPage.getFirstNameErrorMessage(), "First name is required.");
 		
 		log.info("User 01 - Step 05: Verify error message at Lastname textbox");
-		verifyEquals(registerPage.getLastNameErrorMessage(), "Last name is required");
+		verifyEquals(registerPage.getLastNameErrorMessage(), "Last name is required.");
 		
 		log.info("User 01 - Step 06: Enter to Firstname textbox");
 		registerPage.enterToFirstNameTextbox("John");
@@ -70,7 +70,7 @@ public class Level_16_Log extends BaseTest {
 		registerPage.clickToRegisterButton();
 		
 		log.info("User 01 - Step 12: Verify Register success message");
-		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed.");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
 	}
 

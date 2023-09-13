@@ -16,6 +16,10 @@ import org.testng.Reporter;
 
 
 public class BaseTest {
+	public WebDriver getDriver() {
+		return driver;
+	}
+
 	private WebDriver driver;
 	protected final Logger log;
 	public BaseTest() {
